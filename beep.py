@@ -3,7 +3,8 @@ import sys
 import time
 
 command = ["ping", "192.168.0.1", "-c", "1"]
-criteria = 50.0
+ms_criteria = 50.0
+cycle_criteria = 0.5
 
 def beep(level):
     comment = f"{level} ping!"
@@ -29,11 +30,12 @@ def main():
             beep("dead")
         else:
             ms = get_mil_sec(output)
-            if ms > criteria:
-                beep("high")
+            if ms > ms_criteria:
+                beep(f"[{ms} ms] high")
+                
             else:
                 print(f"ping: {ms} ms")
-        time.sleep(0.5)
+        time.sleep(cycle_criteria)
 
 if __name__ == '__main__':
     main()
