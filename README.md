@@ -8,3 +8,6 @@
 
 ## 여담
 맥 os 터미널의 say라는 재밌는 명령어가 있다길래 적극 활용했습니다.
+
+### 이미지
+![image](https://github.com/terria1020/ping-checker-OS-X-/blob/main/work.png)
