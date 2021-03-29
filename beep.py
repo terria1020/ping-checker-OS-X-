@@ -39,7 +39,6 @@ def main():
             time.sleep(cycle_criteria)
     except KeyboardInterrupt:
         print("\nKeyboard 인터럽트를 통한 프로그램 종료입니다.")
-    
 
 if __name__ == '__main__':
     main()
