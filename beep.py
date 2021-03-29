@@ -10,13 +10,14 @@ ip = ini['Settings']['ip']
 ms_criteria = float(ini['Settings']['ms_criteria'])
 cycle_criteria = float(ini['Settings']['cycle_criteria'])
 sound_toggle = (ini['Settings']['sound'] == 'True')
+message = ini['Settings']['message']
 
 command = ["ping", ip, "-c", "1"]
 
 def beep(level):
     comment = f"{level} ping!"
     if sound_toggle:
-        subprocess.call(["say", "ping problem!"])
+        subprocess.call(["say", message])
     print(comment)
 
 def get_mil_sec(out):
