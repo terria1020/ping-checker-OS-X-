@@ -16,7 +16,7 @@ try:
     command = ["ping", ip, "-c", "1"]
 except Exception:
     print("[!] cannot find \'setting.ini\'")
-    print("  download: \'settings.ini\'")
+    print("  download: \'setting.ini\'")
     print("  from: github.com/terria1020/ping-checker-OS-X-")
     sys.exit()
 
