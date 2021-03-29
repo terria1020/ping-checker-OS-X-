@@ -3,16 +3,22 @@ import sys
 import time
 import configparser
 
-ini = configparser.ConfigParser()
-ini.read("setting.ini")
+try:
+    ini = configparser.ConfigParser()
+    ini.read("setting.ini")
 
-ip = ini['Settings']['ip']
-ms_criteria = float(ini['Settings']['ms_criteria'])
-cycle_criteria = float(ini['Settings']['cycle_criteria'])
-sound_toggle = (ini['Settings']['sound'] == 'True')
-message = ini['Settings']['message']
+    ip = ini['Settings']['ip']
+    ms_criteria = float(ini['Settings']['ms_criteria'])
+    cycle_criteria = float(ini['Settings']['cycle_criteria'])
+    sound_toggle = (ini['Settings']['sound'] == 'True')
+    message = ini['Settings']['message']
 
-command = ["ping", ip, "-c", "1"]
+    command = ["ping", ip, "-c", "1"]
+except Exception:
+    print("[!] cannot find \'setting.ini\'")
+    print("  download: \'settings.ini\'")
+    print("  from: github.com/terria1020/ping-checker-OS-X-")
+    sys.exit()
 
 def beep(level):
     comment = f"{level} ping!"
