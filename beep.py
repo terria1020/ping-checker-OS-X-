@@ -1,14 +1,22 @@
 import subprocess
 import sys
 import time
+import configparser
 
-command = ["ping", "192.168.0.1", "-c", "1"]
-ms_criteria = 50.0
-cycle_criteria = 0.5
+ini = configparser.ConfigParser()
+ini.read("setting.ini")
+
+ip = ini['Settings']['ip']
+ms_criteria = float(ini['Settings']['ms_criteria'])
+cycle_criteria = float(ini['Settings']['cycle_criteria'])
+sound_toggle = (ini['Settings']['sound'] == 'True')
+
+command = ["ping", ip, "-c", "1"]
 
 def beep(level):
     comment = f"{level} ping!"
-    subprocess.call(["say", "ping problem!"])
+    if sound_toggle:
+        subprocess.call(["say", "ping problem!"])
     print(comment)
 
 def get_mil_sec(out):
