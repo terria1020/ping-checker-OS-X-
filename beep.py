@@ -24,18 +24,22 @@ def request():
     return out.decode()
 
 def main():
-    while (True):
-        output = request()
-        if (output.find("time=") < 0):
-            beep("dead")
-        else:
-            ms = get_mil_sec(output)
-            if ms > ms_criteria:
-                beep(f"[{ms} ms] high")
-                
+    try:
+        while (True):
+            output = request()
+            if (output.find("time=") < 0):
+                beep("dead")
             else:
-                print(f"ping: {ms} ms")
-        time.sleep(cycle_criteria)
+                ms = get_mil_sec(output)
+                if ms > ms_criteria:
+                    beep(f"[{ms} ms] high")
+                    
+                else:
+                    print(f"ping: {ms} ms")
+            time.sleep(cycle_criteria)
+    except KeyboardInterrupt:
+        print("\nKeyboard 인터럽트를 통한 프로그램 종료입니다.")
+    
 
 if __name__ == '__main__':
     main()
