@@ -1,10 +1,10 @@
 import subprocess
-import sys
-import time
-import configparser
+from sys import exit
+from time import sleep
+from configparser import ConfigParser
 
 try:
-    ini = configparser.ConfigParser()
+    ini = ConfigParser()
     ini.read(".setting.ini")
 
     ip = ini['Settings']['ip']
@@ -18,7 +18,7 @@ except Exception:
     print("[!] cannot find \'.setting.ini\'")
     print("  download: \'.setting.ini\'")
     print("  from: github.com/terria1020/ping-checker-OS-X-")
-    sys.exit()
+    exit()
 
 def beep(level):
     comment = f"{level} ping!"
@@ -51,7 +51,7 @@ def main():
                     
                 else:
                     print(f"ping: {ms} ms")
-            time.sleep(cycle_criteria)
+            sleep(cycle_criteria)
     except KeyboardInterrupt:
         print("\nKeyboard 인터럽트를 통한 프로그램 종료입니다.")
 
